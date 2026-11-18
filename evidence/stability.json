@@ -1,0 +1,38 @@
+{
+  "browser": "159.0.8154.6",
+  "gpu": {
+    "vendor": "nvidia",
+    "architecture": "lovelace",
+    "device": "",
+    "description": "",
+    "isFallbackAdapter": false
+  },
+  "before": {
+    "dropped": 0,
+    "total": 9,
+    "rate": 1,
+    "paused": false
+  },
+  "after": {
+    "dropped": 0,
+    "total": 126,
+    "rate": 1,
+    "paused": false
+  },
+  "status": {
+    "state": "Enhancing",
+    "detail": "WebGPU · ultra",
+    "width": 320,
+    "height": 180,
+    "output": [
+      3840,
+      2160
+    ],
+    "backend": "WebGPU",
+    "processingMs": 9.600000000558794,
+    "gpuMs": 8.323072,
+    "dropped": 0,
+    "memoryBytes": 66816000,
+    "fps": 23
+  }
+}

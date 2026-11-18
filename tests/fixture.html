@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Vanta integration fixture</title>
+    <style>
+      body {
+        margin: 20px;
+        background: #20222a;
+        color: white;
+        font: 16px sans-serif;
+      }
+      video {
+        width: 480px;
+        height: 270px;
+        object-fit: contain;
+      }
+      #portrait {
+        width: 135px;
+        height: 240px;
+      }
+      img {
+        width: 80px;
+      }
+      .hidden {
+        display: none;
+      }
+      #stage {
+        position: relative;
+        width: 480px;
+        height: 270px;
+      }
+      #caption {
+        position: absolute;
+        bottom: 10px;
+        left: 130px;
+        z-index: 2;
+      }
+      button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vanta local player fixture</h1>
+    <div id="stage">
+      <video id="main" muted loop playsinline></video
+      ><span id="caption">Site caption stays visible</span>
+    </div>
+    <video id="portrait" muted loop playsinline></video
+    ><video class="hidden" id="advert" muted autoplay></video
+    ><img
+      alt="Static image"
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' fill='red'/%3E%3C/svg%3E"
+    /><img
+      alt="GIF"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    /><button id="dynamic">Add video</button>
+    <div id="dynamic-root"></div>
+    <script>
+      window.ready = (async () => {
+        async function make(w, h) {
+          const c = document.createElement("canvas");
+          c.width = w;
+          c.height = h;
+          const ctx = c.getContext("2d");
+          let frame = 0;
+          const paint = () => {
+            ctx.fillStyle = "#20252c";
+            ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = "#9470cd";
+            ctx.fillRect(w * 0.12, h * 0.15, w * 0.7, h * 0.65);
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 25; i++) {
+              ctx.beginPath();
+              ctx.moveTo(0, i * 9);
+              ctx.lineTo(w, h - i * 3);
+              ctx.stroke();
+            }
+            ctx.fillStyle = "#fff";
+            ctx.font = `${h / 7}px sans-serif`;
+            ctx.fillText("VANTA", w * 0.2, h * 0.55);
+            ctx.fillStyle = "#46b978";
+            ctx.fillRect(frame % w, h * 0.8, 8, 8);
+            frame++;
+          };
+          paint();
+          const stream = c.captureStream(24);
+          const timer = setInterval(paint, 1000 / 24);
+          const recorder = new MediaRecorder(stream, {
+            mimeType: "video/webm;codecs=vp8",
+            videoBitsPerSecond: 180000,
+          });
+          const chunks = [];
+          recorder.ondataavailable = (e) => chunks.push(e.data);
+          const done = new Promise((r) => (recorder.onstop = r));
+          recorder.start();
+          await new Promise((r) => setTimeout(r, 1100));
+          recorder.stop();
+          await done;
+          clearInterval(timer);
+          stream.getTracks().forEach((t) => t.stop());
+          return URL.createObjectURL(new Blob(chunks, { type: "video/webm" }));
+        }
+        const landscape = await make(320, 180),
+          portrait = await make(180, 320);
+        window.landscape = landscape;
+        main.src = landscape;
+        document.querySelector("#portrait").src = portrait;
+        advert.src = landscape;
+        await main.play();
+        document.querySelector("#dynamic").onclick = async () => {
+          const v = document.createElement("video");
+          v.id = "added";
+          v.muted = true;
+          v.loop = true;
+          v.src = landscape;
+          document.querySelector("#dynamic-root").append(v);
+          await v.play();
+        };
+        return true;
+      })();
+    </script>
+  </body>
+</html>

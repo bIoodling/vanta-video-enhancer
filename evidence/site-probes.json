@@ -1,0 +1,29 @@
+[
+  {
+    "requested": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+    "url": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+    "status": 200,
+    "title": "Big Buck Bunny 60fps 4K - Official Blender Foundation Short Film - YouTube",
+    "videoCount": 1,
+    "playing": 0,
+    "certified": false
+  },
+  {
+    "requested": "https://www.youtube.com/shorts/",
+    "url": "https://consent.youtube.com/m?continue=https%3A%2F%2Fwww.youtube.com%2Fshorts%3Fcbrd%3D1&gl=GB&m=0&pc=yt&cm=2&hl=en-GB&src=1",
+    "status": 200,
+    "title": "Before you continue to YouTube",
+    "videoCount": 0,
+    "playing": 0,
+    "certified": false
+  },
+  {
+    "requested": "https://www.tiktok.com/",
+    "url": "https://www.tiktok.com/",
+    "status": 200,
+    "title": "Log in | TikTok",
+    "videoCount": 2,
+    "playing": 1,
+    "certified": false
+  }
+]

@@ -1,0 +1,350 @@
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #f4f3f7;
+  background: #07080a;
+  color-scheme: dark;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  width: 410px;
+}
+button,
+select,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+}
+main {
+  padding: 27px 18px 18px;
+  border: 1px solid #555362;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 60% 0%, #111218 0%, transparent 55%), #08090c;
+  box-shadow: inset 0 0 20px #30303d30;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9px 23px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #ffffff0b;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.logo {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 6px #c4b2ff30);
+}
+.icon {
+  background: none;
+  border: 0;
+  color: #a9a7b6;
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+}
+.icon svg {
+  width: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1 {
+  font-weight: 500;
+  font-size: 21px;
+}
+h2 {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 18px 0 10px;
+}
+p {
+  color: #aaa9b6;
+}
+.enhance {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 12px 20px;
+  border: 1px solid #383944;
+  border-radius: 14px;
+  background: linear-gradient(110deg, #17181d, #101115 60%, #1b1827);
+  box-shadow: inset 0 1px 1px #ffffff06;
+}
+.enhance p {
+  font-size: 14px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+.play {
+  flex-shrink: 0;
+  width: 23px;
+  height: 27px;
+  fill: none;
+  stroke: #d3d2df;
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+.toggle {
+  position: relative;
+  width: 58px;
+  height: 29px;
+  min-width: 58px;
+  border: 1px solid #6c6978;
+  border-radius: 30px;
+  background: #34333e;
+  margin-left: auto;
+  padding: 0;
+}
+.toggle:after {
+  content: "";
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  left: 3px;
+  top: 2px;
+  border-radius: 50%;
+  background: #f9f8ff;
+  box-shadow: 0 1px 5px #0003;
+  transition: left 0.15s;
+}
+.toggle.on {
+  background: linear-gradient(105deg, #8461dc, #a38bef);
+  border-color: #af9aff;
+  box-shadow: inset 0 0 8px #c4b5ff30;
+}
+.toggle.on:after {
+  left: 30px;
+}
+.presets {
+  display: flex;
+  gap: 2px;
+}
+button:not(.icon, .toggle, .brand, .detection) {
+  border: 1px solid #363740;
+  border-radius: 10px;
+  background: linear-gradient(130deg, #191a20, #101116);
+  min-height: 42px;
+}
+.presets button {
+  width: 33.333%;
+  font-size: 17px;
+  text-transform: capitalize;
+  color: #d7d5e1;
+}
+.presets button.selected,
+.actions .confirm {
+  border: 2px solid #b784fa;
+  box-shadow:
+    inset 0 0 0 1px #8e4fe4,
+    inset 0 0 15px #9c6cf02b;
+  background: linear-gradient(130deg, #252034, #211c34);
+}
+.select {
+  position: relative;
+}
+.select select {
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  padding: 0 40px 0 16px;
+  border: 1px solid #383944;
+  border-radius: 11px;
+  background: linear-gradient(120deg, #191a20, #0e0f13);
+  color: #e7e5ed;
+  font-size: 16px;
+}
+.select > span {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  font-size: 23px;
+  pointer-events: none;
+}
+.detection {
+  margin-top: 19px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  text-align: left;
+  padding: 15px 18px 12px;
+  border: 1px solid #ffffff07;
+  border-top-color: #363740;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #101115, #090a0d);
+}
+.detection svg {
+  width: 24px;
+  height: 26px;
+  fill: none;
+  stroke: #aaa8b6;
+  stroke-width: 2;
+}
+.detection h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.detection p {
+  font-size: 13px;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7c7b88;
+  flex-shrink: 0;
+}
+.dot.green {
+  background: #4cc470;
+  box-shadow: 0 0 8px #45bc6320;
+}
+.chevron {
+  margin-left: auto;
+  color: #aaa8b6;
+  font-size: 22px;
+}
+.details {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 12px 4px 0;
+  overflow-wrap: anywhere;
+}
+.warning {
+  position: relative;
+  text-align: center;
+  padding: 27px 19px 20px;
+}
+.warning .close {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  font-size: 28px;
+}
+.alert {
+  width: 49px;
+  height: 46px;
+  fill: none;
+  stroke: #ae7df3;
+  stroke-width: 3.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px #8c4bea55);
+}
+.warning h1 {
+  font-size: 24px;
+  margin: 15px 0 12px;
+}
+.warning p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d2d0dc;
+  font-size: 14px;
+}
+.warning .check {
+  justify-content: center;
+  margin: 16px 0 25px;
+}
+input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #777783;
+  border-radius: 5px;
+  background: #101115;
+  margin: 0;
+}
+input:checked {
+  background: #9e77e7;
+  box-shadow: inset 0 0 0 3px #17121f;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+}
+.actions button {
+  width: 50%;
+  font-size: 16px;
+  color: #b9b7c4;
+}
+.actions .confirm {
+  color: #bb82ff;
+}
+.settings h2 {
+  margin-top: 0;
+}
+.settings .check {
+  margin: 20px 0;
+}
+.settings > button {
+  width: 100%;
+}
+.compact {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 20px 23px;
+}
+.compact .brand {
+  border: 0;
+  background: none;
+  padding: 0;
+  margin-right: 10px;
+}
+.compact .logo {
+  width: 25px;
+  height: 25px;
+}
+.compact-text {
+  font-size: 14px;
+  text-transform: capitalize;
+  flex: 1;
+}
+.compact .toggle {
+  width: 42px;
+  min-width: 42px;
+  height: 24px;
+}
+.compact .toggle:after {
+  height: 18px;
+  width: 18px;
+}
+.compact .toggle.on:after {
+  left: 20px;
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid #c59cff;
+  outline-offset: 3px;
+}
